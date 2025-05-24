@@ -1,0 +1,38 @@
+name: Build and Deploy Flutter Web
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.16.0"
+          channel: "stable"
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Build web
+        run: |
+          flutter build web --release --base-href "/your-repo-name/"
+
+      # Fix caching issues
+      - name: Add cache busting
+        run: |
+          echo "CACHE_BUSTER=$(date +%s)" >> $GITHUB_ENV
+          find build/web -name "*.html" -exec sed -i "s/main\.dart\.js/main.dart.js?v=${{ env.CACHE_BUSTER }}/g" {} \;
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build/web
+          force_orphan: true

@@ -68,8 +68,7 @@ class PdfBloc extends Bloc<PdfEvent, PdfState> {
 
   // Replace with your GitHub repository details
   static const String githubUser = 'Ibrahim-Lokman';
-  static const String githubRepo =
-      'https://github.com/Ibrahim-Lokman/readz.git';
+  static const String githubRepo = 'readz';
   static const String pdfFolder = 'pdfs'; // folder containing PDFs
 
   PdfBloc() : super(PdfInitial()) {

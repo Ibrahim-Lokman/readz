@@ -11,7 +11,7 @@
     <link rel="apple-touch-icon" href="icons/Icon-192.png" />
     <link rel="icon" type="image/png" href="favicon.png" />
     <title>PDF Reader</title>
-    <link rel="manifest" href="manifest.json" />
+    <link rel="manifest" href="readz/manifest.json" />
 
     <!-- Prevent caching issues -->
     <meta
@@ -22,19 +22,12 @@
     <meta http-equiv="Expires" content="0" />
   </head>
   <body>
-    <script>
+    <scrip src="readz/flutter_bootstrap.js" async>
       window.addEventListener("load", function (ev) {
-        _flutter.loader.loadEntrypoint({
-          serviceWorker: {
-            serviceWorkerVersion: serviceWorkerVersion,
-          },
-          onEntrypointLoaded: function (engineInitializer) {
-            engineInitializer.initializeEngine().then(function (appRunner) {
-              appRunner.runApp();
-            });
-          },
-        });
-      });
-    </script>
+      _flutter.loader.loadEntrypoint({ serviceWorker: { serviceWorkerVersion:
+      serviceWorkerVersion, }, onEntrypointLoaded: function (engineInitializer)
+      { engineInitializer.initializeEngine().then(function (appRunner) {
+      appRunner.runApp(); }); }, }); });
+    </scrip>
   </body>
 </html>

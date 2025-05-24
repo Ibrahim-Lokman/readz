@@ -22,7 +22,7 @@ jobs:
 
       - name: Build web
         run: |
-          flutter build web --release --base-href "/your-repo-name/"
+          flutter build web --release --base-href "/readz/"
 
       # Fix caching issues
       - name: Add cache busting
